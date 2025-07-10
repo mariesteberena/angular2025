@@ -102,7 +102,7 @@ La aplicación estará disponible en `http://localhost:4200`
 ### Credenciales de Prueba
 Para acceder al sistema, utiliza las siguientes credenciales:
 
-**Email:** `admin@test.com`  
+**Email:** `admin@demo.com`  
 **Contraseña:** `123456`
 
 > **Nota:** Estas credenciales son simuladas para propósitos de demostración.
