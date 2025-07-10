@@ -102,8 +102,8 @@ La aplicación estará disponible en `http://localhost:4200`
 ### Credenciales de Prueba
 Para acceder al sistema, utiliza las siguientes credenciales:
 
-**Email:** `admin@spb.gba.gov.ar`  
-**Contraseña:** `admin`
+**Email:** `admin@test.com`  
+**Contraseña:** `123456`
 
 > **Nota:** Estas credenciales son simuladas para propósitos de demostración.
 
