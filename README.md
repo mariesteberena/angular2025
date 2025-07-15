@@ -25,7 +25,7 @@ La app estará disponible en [http://localhost:4200]
 **Email:** `admin@demo.com`  
 **Contraseña:** `123456`
 
-> **Nota:** Estas credenciales son simuladas para propósitos de demostración.
+> **Nota:** Estas credenciales son simuladas para la demostración.
 
 ## 📱 Funcionalidades Detalladas
 
