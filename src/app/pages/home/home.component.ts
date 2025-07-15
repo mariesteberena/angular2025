@@ -122,7 +122,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loadData();
     
-    // Suscribirse a cambios en los datos
     this.internaService.internas$.subscribe(() => {
       this.internaStats = this.internaService.getInternaStats();
     });

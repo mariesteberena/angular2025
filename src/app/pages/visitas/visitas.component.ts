@@ -50,5 +50,4 @@ import { CommonModule } from '@angular/common';
   `
 })
 export class VisitasComponent {
-  // Componente simplificado - solo muestra la página de construcción
 }

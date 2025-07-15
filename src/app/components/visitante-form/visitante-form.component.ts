@@ -353,10 +353,8 @@ export class VisitanteFormComponent implements OnInit {
       }
     });
     
-    // Escuchar cambios en parentesco para llenar automáticamente el vínculo
     this.visitanteForm.get('parentesco')?.valueChanges.subscribe(parentesco => {
       if (parentesco) {
-        // Usar la misma letra para parentesco y vínculo
         this.visitanteForm.patchValue({
           vinculo: parentesco
         });
@@ -367,7 +365,6 @@ export class VisitanteFormComponent implements OnInit {
   updateImageValidation() {
     const imagenControl = this.visitanteForm.get('imagen');
     if (this.esMayorDeEdad) {
-      // Para mayores de edad, la imagen es opcional por ahora
       imagenControl?.clearValidators();
     } else {
       imagenControl?.clearValidators();
@@ -376,7 +373,6 @@ export class VisitanteFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // Verificar si el formulario es válido
     if (!this.visitanteForm.valid) {
       alert('Por favor, completa todos los campos requeridos');
       return;
@@ -384,7 +380,6 @@ export class VisitanteFormComponent implements OnInit {
     
     const formValue = this.visitanteForm.value;
     
-    // Crear los datos del formulario
     const createData: CreateVisitanteDto = {
       nombre: formValue.nombre,
       apellido: formValue.apellido,
@@ -392,12 +387,11 @@ export class VisitanteFormComponent implements OnInit {
       fechaNacimiento: new Date(formValue.fechaNacimiento),
       domicilio: formValue.domicilio,
       parentesco: formValue.parentesco,
-      vinculo: formValue.parentesco, // Usar la misma letra del parentesco
+      vinculo: formValue.parentesco,
       imagen: formValue.imagen || undefined,
       telefono: formValue.telefono || undefined
     };
 
-    // Emitir el evento de forma síncrona
     try {
       this.submitVisitante.emit(createData);
     } catch (error) {
@@ -413,7 +407,6 @@ export class VisitanteFormComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-      // Convertir archivo a base64 para almacenar
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.visitanteForm.patchValue({

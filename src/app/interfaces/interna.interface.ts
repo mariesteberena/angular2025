@@ -2,15 +2,15 @@ export interface Interna {
   id: number;
   nombre: string;
   apellido: string;
-  fcn: string; // Número de ficha criminológica
+  fcn: string;
   dni: string;
   fechaNacimiento: Date;
   domicilio: string;
   pabellon: number;
   celda: number;
   imagen?: string;
-  visitantes: number[]; // IDs de visitantes autorizados
-  familiares: number[]; // IDs de otras internas que son familiares
+  visitantes: number[];
+  familiares: number[];
   fechaIngreso: Date;
   estado: 'activa' | 'trasladada' | 'liberada';
 }

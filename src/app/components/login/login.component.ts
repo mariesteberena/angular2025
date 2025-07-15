@@ -75,7 +75,7 @@ import { AuthService, LoginCredentials } from '../../services/auth.service';
           <div class="mt-4 p-3 bg-light rounded-3 border-start border-primary border-4">
             <h6 class="fw-bold text-dark mb-2">Credenciales de prueba:</h6>
             <div class="small text-muted">
-              <p class="mb-1"><strong>Email:</strong> admin&#64;test.com</p>
+              <p class="mb-1"><strong>Email:</strong> admin&#64;demo.com</p>
               <p class="mb-0"><strong>Contraseña:</strong> 123456</p>             
             </div>
           </div>

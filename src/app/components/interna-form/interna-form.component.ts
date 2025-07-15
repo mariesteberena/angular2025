@@ -329,7 +329,6 @@ export class InternaFormComponent implements OnInit {
     private fb: FormBuilder,
     private internaService: InternaService
   ) {
-    // Calcular fecha máxima (18 años atrás desde hoy)
     const today = new Date();
     const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
     this.maxDate = maxDate.toISOString().split('T')[0];
@@ -394,7 +393,6 @@ export class InternaFormComponent implements OnInit {
       
       if (this.isEditing) {
         const updateData: UpdateInternaDto = {
-          // Enviar todos los campos requeridos por la API para PUT
           nombre: formValue.nombre,
           apellido: formValue.apellido,
           fcn: formValue.fcn,
@@ -407,7 +405,7 @@ export class InternaFormComponent implements OnInit {
           fechaIngreso: new Date(formValue.fechaIngreso),
           estado: formValue.estado,
           familiares: this.selectedFamiliares,
-          visitantes: this.interna?.visitantes || [] // Asegura que visitantes esté presente
+          visitantes: this.interna?.visitantes || []
         };
         this.submitInterna.emit(updateData);
       } else {
@@ -438,7 +436,6 @@ export class InternaFormComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-      // Convertir archivo a base64 para almacenar
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.internaForm.patchValue({

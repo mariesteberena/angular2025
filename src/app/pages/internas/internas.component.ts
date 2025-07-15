@@ -237,12 +237,10 @@ export class InternasComponent implements OnInit {
   isSubmitting = false;
   isLoading = false;
   
-  // Filters
   searchTerm = '';
   selectedPabellon = '';
   selectedEstado = '';
 
-  // Toast Notifications
   showToast = false;
   toastMessage = '';
   toastType: 'success' | 'error' | 'info' = 'info';
@@ -297,14 +295,13 @@ export class InternasComponent implements OnInit {
     this.isSubmitting = true;
     
     if (this.selectedInterna) {
-      // Update existing interna
       this.internaService.updateInterna(this.selectedInterna.id, internaData as UpdateInternaDto).subscribe({
         next: () => {
           this.isSubmitting = false;
           this.showInternaForm = false;
           this.selectedInterna = null;
           this.showToastNotification('Interna actualizada exitosamente!', 'success');
-          this.loadInternas(); // Reload internas to update the list
+          this.loadInternas();
         },
         error: (error) => {
           console.error('Error updating interna:', error);
@@ -313,13 +310,12 @@ export class InternasComponent implements OnInit {
         }
       });
     } else {
-      // Create new interna
       this.internaService.createInterna(internaData as CreateInternaDto).subscribe({
         next: () => {
           this.isSubmitting = false;
           this.showInternaForm = false;
           this.showToastNotification('Interna creada exitosamente!', 'success');
-          this.loadInternas(); // Reload internas to update the list
+          this.loadInternas();
         },
         error: (error) => {
           console.error('Error creating interna:', error);
@@ -342,7 +338,6 @@ export class InternasComponent implements OnInit {
   }
 
   onViewVisitantes(interna: Interna) {
-    // Implementar vista de visitantes de la interna
     alert(`Ver visitantes de ${interna.nombre} ${interna.apellido}`);
   }
 
@@ -352,7 +347,7 @@ export class InternasComponent implements OnInit {
         next: () => {
           this.closeInternaDetail();
           this.showToastNotification('Interna eliminada exitosamente!', 'success');
-          this.loadInternas(); // Reload internas to update the list
+          this.loadInternas();
         },
         error: (error) => {
           console.error('Error deleting interna:', error);
@@ -383,12 +378,10 @@ export class InternasComponent implements OnInit {
     }
   }
 
-  // Toast Notification Methods
   showToastNotification(message: string, type: 'success' | 'error' | 'info' = 'info') {
     this.toastMessage = message;
     this.toastType = type;
     
-    // Set CSS classes based on type
     switch (type) {
       case 'success':
         this.toastClass = 'border-green-500';
@@ -405,7 +398,7 @@ export class InternasComponent implements OnInit {
     }
     
     this.showToast = true;
-    setTimeout(() => this.hideToast(), 3000); // Hide after 3 seconds
+    setTimeout(() => this.hideToast(), 3000);
   }
 
   hideToast() {

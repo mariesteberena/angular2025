@@ -222,13 +222,11 @@ export class VisitantesComponent implements OnInit {
   isSubmitting = false;
   isLoading = false;
 
-  // Filters
   searchTerm = '';
   selectedPabellon = '';
   expandedInternas: Set<number> = new Set();
-  internaFormVisitanteId: number | null = null; // NUEVO: para saber en qué interna mostrar el form
+  internaFormVisitanteId: number | null = null;
 
-  // Toast Notifications
   showToast = false;
   toastMessage = '';
   toastType: 'success' | 'error' | 'info' = 'info';
@@ -243,7 +241,6 @@ export class VisitantesComponent implements OnInit {
   ngOnInit() {
     this.loadData();
     
-    // Suscribirse a cambios en los datos
     this.internaService.internas$.subscribe(internas => {
       this.internas = internas;
       this.filterInternas();
@@ -383,7 +380,6 @@ export class VisitantesComponent implements OnInit {
     this.showVisitanteForm = true;
   }
 
-  // Toast Notification Methods
   showToastNotification(message: string, type: 'success' | 'error' | 'info' = 'info') {
     this.toastMessage = message;
     this.toastType = type;

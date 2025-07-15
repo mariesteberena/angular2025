@@ -10,7 +10,6 @@ export class VisitanteService {
   public visitantes$ = this.visitantesSubject.asObservable();
   private storageKey = 'visitantes_data';
 
-  // Datos iniciales para localStorage
   private initialVisitantes: Visitante[] = [
     {
       id: 1,
@@ -151,7 +150,6 @@ export class VisitanteService {
     const index = currentVisitantes.findIndex(v => v.id === id);
     
     if (index !== -1) {
-      // Recalcular si es mayor de edad si se actualiza la fecha de nacimiento
       let esMayorDeEdad = currentVisitantes[index].esMayorDeEdad;
       if (updates.fechaNacimiento) {
         const fechaNac = new Date(updates.fechaNacimiento);
@@ -194,11 +192,9 @@ export class VisitanteService {
     if (visitanteIndex !== -1) {
       const visitante = currentVisitantes[visitanteIndex];
       
-      // Agregar la interna a la lista de internas autorizadas si no está ya
       if (!visitante.internasAutorizadas.includes(internaId)) {
         visitante.internasAutorizadas.push(internaId);
         
-        // Actualizar el visitante en la lista
         const updatedVisitantes = [...currentVisitantes];
         updatedVisitantes[visitanteIndex] = visitante;
         
@@ -218,24 +214,20 @@ export class VisitanteService {
       return of(false);
     }
 
-    // Si ya está autorizado para esta interna
     if (visitante.internasAutorizadas.includes(internaId)) {
       return of(true);
     }
 
-    // Si no tiene otras internas autorizadas, puede visitar cualquiera
     if (visitante.internasAutorizadas.length === 0) {
       return of(true);
     }
 
-    // Verificar si las internas son familiares
     return internasService.getInternaById(internaId).pipe(
       switchMap((interna: any) => {
         if (!interna) {
           return of(false);
         }
 
-        // Verificar si alguna de las internas autorizadas es familiar de la nueva interna
         const puedeVisitar = visitante.internasAutorizadas.some(internaAutorizada => 
           interna.familiares.includes(internaAutorizada)
         );

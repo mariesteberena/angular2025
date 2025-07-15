@@ -9,7 +9,7 @@ export interface Visitante {
   fechaNacimiento: Date;
   esMayorDeEdad: boolean;
   imagen?: string;
-  internasAutorizadas: number[]; // IDs de internas que puede visitar
+  internasAutorizadas: number[];
   fechaRegistro: Date;
   estado: 'activo' | 'suspendido' | 'inhabilitado';
   telefono?: string;

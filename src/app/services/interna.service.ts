@@ -30,7 +30,6 @@ export class InternaService {
   }
 
   updateInterna(id: number, updates: UpdateInternaDto): Observable<Interna> {
-    // IMPORTANTE: PUT requiere enviar el objeto completo, no solo los campos editados
     return this.http.put<Interna>(`${this.apiUrl}/${id}`, updates).pipe(
       tap(() => this.getInternas().subscribe())
     );
@@ -42,9 +41,7 @@ export class InternaService {
     );
   }
 
-  // Métodos auxiliares para visitantes pueden requerir cambios en la API externa
   addVisitanteToInterna(internaId: number, visitanteId: number): Observable<Interna> {
-    // Este método requiere que la API soporte actualizar el array de visitantes
     return this.getInternaById(internaId).pipe(
       map(interna => {
         if (!interna.visitantes.includes(visitanteId)) {
